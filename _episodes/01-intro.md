@@ -17,11 +17,15 @@ automating repetitive tasks, and its capacity to access networked machines."
 cryptic its commands and operation can be."
 ---
 
-## Welcome & motivation
+# Welcome & motivation
+
+**SHOW** speaker
 
 Welcome to this introduction to the UNIX shell course from UCL's Centre for Advanced Research Computing.
 
-### Background
+## Background
+
+**SHOW** intro slides
 
 Humans and computers commonly interact in many different ways, such as through a keyboard and mouse, touch screen interfaces, or using speech recognition systems.
 The most widely used way to interact with personal computers is called a
@@ -36,22 +40,29 @@ The Unix shell is both a **command-line interface** (CLI) and a scripting langua
 With the proper commands, the shell can repeat tasks with or without some modification as many times as we want.
 Using the shell, the task in the literature example can be accomplished in seconds.
 
-#### Why do we teach Unix shell to researchers?
+## Motivation
 
-After all, anyone who wants to rename several thousand data files can easily do so interactively with a modern programming language like Python, and also do your data analysis and visualisation at the same time. So why do we still teach the shell?
+**SHOW** motivation slides
 
-Firstly, because it's an easy way to introduce some fundamental ideas about how to use computers.
-As we learn how to use the Unix shell, we we will cover many fundamental concepts in good programming, such as getting the computer to repeat things, saving analysis workflows for later re-use, and making your code easy to understand for other people as well as yourself in the future.
+Why do we teach Unix shell to researchers?
+
+After all, anyone who wants to rename several thousand data files can do so with any modern programming language like Python, and also do your data analysis and visualisation at the same time. So why do we need to learn an extra tool instead of using one language for everything?
+
+Firstly, we teach the shell because it's an easy way to introduce some fundamental ideas about computer programming.
+As we learn how to use the Unix shell, we we will cover many fundamental concepts in programming, such as getting the computer to repeat things, savingresearch workflows so you can repeat tasks later, and making your code easy to understand for your future self and anyone you share it with, by using comments nad sensible names for things..
 
 The second answer is, "Because so much else depends on it."
-Installing research software, configuring your default editor, and controlling remote machines frequently assume a basic familiarity with the shell, and with related ideas like standard input and output.
+Installing research software, configuring your default editor, and controlling remote machines frequently assume a basic familiarity with the shell, and with related ideas like standard input and output. (**SHOW** [tensorflow installation instructions](https://www.tensorflow.org/install/pip#linux))
 Beacuse the shell has been around for so long, many tools also use its terminology (for example, the `%ls` and `%cd` magic commands in IPython) and conventions (e.g. why it's a bad idea to put spaces or * in filenames).
 
 The third answer is, "Because it allows you to access many domain-specific tools and computing resources that researchers cannot access otherwise."
 Familiarity with the shell is very useful for remote accessing machines, using high-performance computing infrastructure, and running new specialist tools in many disciplines.
+When computing power is important, creating a graphical interface and processing mouse clicks is a waste of resources. A command line interface can run on a very old slow desktop computer, a tiny raspberry pi, or an expensive high performance system without slowing you down.
 We do not teach HPC or domain-specific skills here but you might have been refered to this course if you are learning how to use UCL's High Performance Computers.
 
-Finally, the shell is incredibly extendable and configurable so you can add all sorts of customisations and shortcuts (show `tmux` with weather, stats, code) to make it work faster or better for your particular project, display useful information about you code, computer or the weather, and make it look like you are a cool hacker in the movies (show [hollywood](https://itsfoss.com/hollywood-hacker-screen/).)
+Finally, the shell is incredibly extendable and configurable so you can add all sorts of customisations and shortcuts (**SHOW** `tmux` with weather, stats, code) to make it work faster or better for your particular project, display useful information about you code, computer or the weather, and make it look like you are a cool hacker in the movies. (**SHOW** [hollywood](https://itsfoss.com/hollywood-hacker-screen/))
+
+**SHOW** back to slides
 
 Some disadvatages of using a command-line interface are that it can be hard to get started using the shell in your everyday work because you need to spend time learning the commands. Many commands have names that are not obvious, so you can't easily guess what `ls` or `cat` do.
 
@@ -60,26 +71,29 @@ While a GUI shows you icons or menus to decide what you want to do, available CL
 However, a small number of "words" (i.e. commands) in Bash gets you a long way.
 This course will cover the most important and commonly used commands, show you how to stick these small commands together like building blocks to make quite complex programs, and explain how to get help to learn new commands when you want to go further.
 
-We will also recommend some more advanced tool and follow up courses if you want to level up your shell.
+**SHOW** links to quizzes, terminology, tips and tricks, and further resources.
+
+If you have already used a Bash shell before you can try the quizzes in this module to see if you already know what we are cvering in these videos. Any questions you get wrong will point you to the relevant parts of the course,  but we recommend everyone watches some of the videos that are listed here. These ones are especially important to make sure you are familiar with the terminology you need for later courses, and some hints and tips that will allow you to work faster in the shell.
+We also have a list of more advanced shell tools, customisations and follow up courses if you want to go beyond the basics we teach here.
 
 Let's get started.
 
-## Terminology
+# Terminology
 
-### Unix
+## Unix
 
 Unix is an operating system that was the forerunner of MacOS and Linux, so we call these Unix-like systems and they have a Unix shell installed already.
 Windows developed in a different way so it has other kinds of command-line interfaces (you might have come across the command prompt or Windows Powersell).
 You will need to install some extra software to allow you to use a Unix shell
 Check out our setup instructions if you haven't done this already.
 
-### Shell
+## Shell
 
 A shell is a program where users can type commands.
 With one line, you can do anything from simple commands like creating a new file to running complicated programs like climate modeling software.
 We might also call this the Bash shell, terminal, or command prompt.
 
-### Bash shell
+## Bash shell
 
 The most popular Unix shell is Bash (the Bourne Again SHell --- so-called because it's derived from a shell written by Stephen Bourne).
 Bash is the default shell on most modern implementations of Unix and in most  packages that provide Unix-like tools for Windows.
@@ -101,7 +115,7 @@ If it says something else (you might see `zsh` or `tcsh` you need to go back to 
 
 In this course, whenever we say "the shell", we mean a Bash shell.
 
-### GUI and CLI
+## GUI and CLI
 
 The most widely used way to interact with personal computers is called a
 **graphical user interface** (GUI).
@@ -111,9 +125,9 @@ A **command-line interface** (CLI) is
 
 TODO
 
-## Tour of the shell
+# Tour of the shell
 
-### Prompt
+## Prompt
 
 Open up your Bash shell and let's have a look around.
 You should presented with a **prompt**, indicating that the shell is waiting for input.
@@ -130,9 +144,9 @@ In examples online,  people often show the prompt as `$ ` or `> ` when showing y
 
 *You do not type the $ prompt* when typing commands, only the words, letters and symbols that follows the prompt.
 
-### Words before the prompt
+## Words before the prompt
 
-### Cursor
+## Cursor
 
 The prompt is followed by a **text cursor**, a character that indicates the position where your typing will appear.
 The cursor is usually a flashing or solid block, but it can also be an underscore or a line.
@@ -140,7 +154,7 @@ You may have seen it in a text editor program, for example.
 
 TODO: difference between line cursor and block. Mention insert key in word?
 
-### Running your first command
+## Running your first command
 
 When you have written the command, you have to press the <kbd>Enter</kbd> key to execute it.
 
@@ -160,22 +174,22 @@ Documents   Library     Music       Public
 
 TODO first drafted up to here...
 
-> ## Command not found
-> If the shell can't find a program whose name is the command you typed, it
-> will print an error message such as:
->
-> ~~~
-> $ ks
-> ~~~
-> {: .language-bash}
-> ~~~
-> ks: command not found
-> ~~~
-> {: .output}
->
-> This might happen if the command was mis-typed or if the program corresponding to that command
-> is not installed.
-{: .callout}
+## Output or no output
+
+## Errors
+
+## Command not found
+If the shell can't find a program whose name is the command you typed, it will print an error message such as:
+
+~~~
+$ ks
+~~~
+{: .language-bash}
+~~~
+ks: command not found
+~~~
+{: .output}
+This might happen if the command was mis-typed or if the program corresponding to that command is not installed
 
 
 ## Nelle's Pipeline: A Typical Problem
