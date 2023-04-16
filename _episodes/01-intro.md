@@ -19,6 +19,8 @@ cryptic its commands and operation can be."
 
 # Welcome & motivation
 
+> TODO: Use `>` and callout for all "show" instructions and todo notes?
+
 > **SHOW** speaker
 
 Welcome to this introduction to the UNIX shell course from UCL's Centre for Advanced Research Computing.
