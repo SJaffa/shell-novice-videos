@@ -19,13 +19,13 @@ cryptic its commands and operation can be."
 
 # Welcome & motivation
 
-**SHOW** speaker
+> **SHOW** speaker
 
 Welcome to this introduction to the UNIX shell course from UCL's Centre for Advanced Research Computing.
 
 ## Background
 
-**SHOW** intro slides
+> **SHOW** intro slides
 
 Humans and computers commonly interact in many different ways, such as through a keyboard and mouse, touch screen interfaces, or using speech recognition systems.
 The most widely used way to interact with personal computers is called a
