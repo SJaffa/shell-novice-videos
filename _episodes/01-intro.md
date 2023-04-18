@@ -17,7 +17,7 @@ automating repetitive tasks, and its capacity to access networked machines."
 cryptic its commands and operation can be."
 ---
 
-# Welcome & motivation
+## Welcome & motivation
 
 > TODO: Use `>` and callout for all "show" instructions and todo notes?
 
@@ -26,7 +26,7 @@ cryptic its commands and operation can be."
 
 Welcome to this introduction to the UNIX shell course from UCL's Centre for Advanced Research Computing.
 
-## Background
+### Background
 
 > **SHOW** intro slides
 {: .callout}
@@ -44,7 +44,7 @@ The Unix shell is both a **command-line interface** (CLI) and a scripting langua
 With the proper commands, the shell can repeat tasks with or without some modification as many times as we want.
 Using the shell, the task in the literature example can be accomplished in seconds.
 
-## Motivation
+### Motivation
 
 > **SHOW** motivation slides
 {: .callout}
@@ -95,22 +95,22 @@ We also have a list of more advanced shell tools, customisations and follow up c
 
 Let's get started.
 
-# Terminology
+## Terminology
 
-## Unix
+### Unix
 
 Unix is an operating system that was the forerunner of MacOS and Linux, so we call these Unix-like systems and they have a Unix shell installed already.
 Windows developed in a different way so it has other kinds of command-line interfaces (you might have come across the command prompt or Windows Powersell).
 You will need to install some extra software to allow you to use a Unix shell
 Check out our setup instructions if you haven't done this already.
 
-## Shell
+### Shell
 
 A shell is a program where users can type commands.
 With one line, you can do anything from simple commands like creating a new file to running complicated programs like climate modeling software.
 We might also call this the Bash shell, terminal, or command prompt.
 
-## Bash shell
+### Bash shell
 
 The most popular Unix shell is Bash (the Bourne Again SHell --- so-called because it's derived from a shell written by Stephen Bourne).
 Bash is the default shell on most modern implementations of Unix and in most  packages that provide Unix-like tools for Windows.
@@ -132,14 +132,14 @@ If it says something else (you might see `zsh` or `tcsh` you need to go back to 
 
 In this course, whenever we say "the shell", we mean a Bash shell.
 
-## GUI and CLI
+### GUI and CLI
 
 The most widely used way to interact with personal computers is called a **graphical user interface** (GUI).
 A GUI displays some graphical elements such as menus, icon, or text boxes, and we interact with it by clicking a mouse, tapping a touch screen or typing.
 
 A **command-line interface** (CLI) is a text only interface where you enter one command per line and then execute that line.
 
-## File system, folders and directories
+### File system, folders and directories
 
 > **SHOW** image of a filesystem
 {: .callout}
@@ -150,12 +150,12 @@ On Unix systems, the highest level that everything on the computer - the operati
 
 The "working directory" is the folder that you have open at the moment.
 
-# Tour of the shell
+## Tour of the shell
 
 > **SHOW** terminal
 {: .callout}
 
-## Prompt
+### Prompt
 
 Open up your Bash shell and let's have a look around.
 You should presented with a **prompt**, indicating that the shell is waiting for input.
@@ -176,7 +176,7 @@ In examples online,  people often show the prompt as `$ ` or `> ` when showing y
 
 *You do not type the $ prompt* when typing commands, only the words, letters and symbols that follows the prompt.
 
-## Words before the prompt
+### Words before the prompt
 
 You might see some words and symbols before the prompt, this might be different than mine.
 This can show you some useful information about your computer, for example mine tells me my username, the name of the computer I am logged on to, and what my working directory is.
@@ -185,7 +185,7 @@ If you don't understand all the parts now we'll cover related information later 
 You can also customise this to add different information.
 We'll put a link to more resources on that at the end of the course.
 
-## Cursor
+### Cursor
 
 The prompt is followed by a **text cursor**, a character that indicates the position where your typing will appear.
 The cursor is usually a flashing or solid block, but it can also be an underscore or a line.
@@ -193,7 +193,7 @@ You may have seen it in a text editor program, for example.
 
 TODO: difference between line cursor and block. Mention insert key in word?
 
-## Running your first command
+### Running your first command
 
 When you have written the command, you have to press the <kbd>Enter</kbd> key to execute it.
 
@@ -213,11 +213,17 @@ Documents   Library     Music       Public
 
 The output you get might look different to mine, it depends what folder your terminal is currenly looking at, your current working directory
 
-## Output or no output
+### Output or no output
 
-## Errors
+One of the advantages of a command line interface is it's minimal resource use, it doesn't waste anything.
+This means that if you type a command, you might get no output at all.
+It doesn't bother telling you "that operation was successful", it relies on the people who wrote the programs to be good enough at their jobs that it would produce an error message if it went wrong.
+No output is normally a good thing, it means that you have not had an error, but it can be disconcerting if you are used to GUI's with confirmation messages.
+In the Bash shell, you can tell your command has finished successfully if it shows you the `$ ` prompt again.
+That means the last line has finished running and it is ready for the next command.
 
-## Command not found
+### Errors
+
 If the shell can't find a program whose name is the command you typed, it will print an error message such as:
 
 ~~~
@@ -230,36 +236,23 @@ ks: command not found
 {: .output}
 This might happen if the command was mis-typed or if the program corresponding to that command is not installed
 
+TODO no flag/argument
 
 ## Nelle's Pipeline: A Typical Problem
 
-Nelle Nemo, a marine biologist,
-has just returned from a six-month survey of the
-[North Pacific Gyre](http://en.wikipedia.org/wiki/North_Pacific_Gyre),
-where she has been sampling gelatinous marine life in the
-[Great Pacific Garbage Patch](http://en.wikipedia.org/wiki/Great_Pacific_Garbage_Patch).
-She has 1520 samples that she's run through an assay machine to measure the relative abundance
-of 300 proteins.
+Nelle Nemo, a marine biologist, has just returned from a six-month survey of the [North Pacific Gyre](http://en.wikipedia.org/wiki/North_Pacific_Gyre), where she has been sampling gelatinous marine life in the [Great Pacific Garbage Patch](http://en.wikipedia.org/wiki/Great_Pacific_Garbage_Patch).
+She has 1520 samples that she's run through an assay machine to measure the relative abundance of 300 proteins.
 She needs to run these 1520 files through an imaginary program called `goostats.sh`.
-In addition to this huge task, she has to write up results by the end of the month, so her paper
-can appear in a special issue of *Aquatic Goo Letters*.
+In addition to this huge task, she has to write up results by the end of the  month, so her paper can appear in a special issue of *Aquatic Goo Letters*.
 
-If Nelle chooses to run `goostats.sh` by hand using a GUI,
-she'll have to select and open a file 1520 times.
-If `goostats.sh` takes 30 seconds to run each file, the whole process will take more than 12 hours
-of Nelle's attention.
-With the shell, Nelle can instead assign her computer this mundane task while she focuses
-her attention on writing her paper.
+If Nelle chooses to run `goostats.sh` by hand using a GUI, she'll have to select and open a file 1520 times.
+If `goostats.sh` takes 30 seconds to run each file, the whole process will take more than 12 hours of Nelle's attention.
+With the shell, Nelle can instead assign her computer this mundane task while she focuses her attention on writing her paper.
 
 The next few lessons will explore the ways Nelle can achieve this.
-More specifically,
-the lessons explain how she can use a command shell to run the `goostats.sh` program,
-using loops to automate the repetitive steps of entering file names,
-so that her computer can work while she writes her paper.
+More specifically, the lessons explain how she can use a command shell to run the `goostats.sh` program, using loops to automate the repetitive steps of entering file names, so that her computer can work while she writes her paper.
 
-As a bonus,
-once she has put a processing pipeline together,
-she will be able to use it again whenever she collects more data.
+As a bonus, once she has put a processing pipeline together, she will be able to use it again whenever she collects more data.
 
 In order to achieve her task, Nelle needs to know how to:
 - navigate to a file/directory
