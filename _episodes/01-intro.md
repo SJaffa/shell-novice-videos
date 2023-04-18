@@ -22,12 +22,14 @@ cryptic its commands and operation can be."
 > TODO: Use `>` and callout for all "show" instructions and todo notes?
 
 > **SHOW** speaker
+{: .callout}
 
 Welcome to this introduction to the UNIX shell course from UCL's Centre for Advanced Research Computing.
 
 ## Background
 
 > **SHOW** intro slides
+{: .callout}
 
 Humans and computers commonly interact in many different ways, such as through a keyboard and mouse, touch screen interfaces, or using speech recognition systems.
 The most widely used way to interact with personal computers is called a
@@ -44,7 +46,8 @@ Using the shell, the task in the literature example can be accomplished in secon
 
 ## Motivation
 
-**SHOW** motivation slides
+> **SHOW** motivation slides
+{: .callout}
 
 Why do we teach Unix shell to researchers?
 
@@ -54,7 +57,11 @@ Firstly, we teach the shell because it's an easy way to introduce some fundament
 As we learn how to use the Unix shell, we we will cover many fundamental concepts in programming, such as getting the computer to repeat things, savingresearch workflows so you can repeat tasks later, and making your code easy to understand for your future self and anyone you share it with, by using comments nad sensible names for things..
 
 The second answer is, "Because so much else depends on it."
-Installing research software, configuring your default editor, and controlling remote machines frequently assume a basic familiarity with the shell, and with related ideas like standard input and output. (**SHOW** [tensorflow installation instructions](https://www.tensorflow.org/install/pip#linux))
+Installing research software, configuring your default editor, and controlling remote machines frequently assume a basic familiarity with the shell, and with related ideas like standard input and output.
+
+> **SHOW** [tensorflow installation instructions](https://www.tensorflow.org/install/pip#linux)
+{: .callout}
+
 Beacuse the shell has been around for so long, many tools also use its terminology (for example, the `%ls` and `%cd` magic commands in IPython) and conventions (e.g. why it's a bad idea to put spaces or * in filenames).
 
 The third answer is, "Because it allows you to access many domain-specific tools and computing resources that researchers cannot access otherwise."
@@ -62,9 +69,16 @@ Familiarity with the shell is very useful for remote accessing machines, using h
 When computing power is important, creating a graphical interface and processing mouse clicks is a waste of resources. A command line interface can run on a very old slow desktop computer, a tiny raspberry pi, or an expensive high performance system without slowing you down.
 We do not teach HPC or domain-specific skills here but you might have been refered to this course if you are learning how to use UCL's High Performance Computers.
 
-Finally, the shell is incredibly extendable and configurable so you can add all sorts of customisations and shortcuts (**SHOW** `tmux` with weather, stats, code) to make it work faster or better for your particular project, display useful information about you code, computer or the weather, and make it look like you are a cool hacker in the movies. (**SHOW** [hollywood](https://itsfoss.com/hollywood-hacker-screen/))
+> **SHOW** `tmux` with weather, stats, code
+{: .callout}
 
-**SHOW** back to slides
+Finally, the shell is incredibly extendable and configurable so you can add all sorts of customisations and shortcuts  to make it work faster or better for your particular project, display useful information about you code, computer or the weather, and make it look like you are a cool hacker in the movies.
+
+> **SHOW** [hollywood](https://itsfoss.com/hollywood-hacker-screen/)
+{: .callout}
+
+>**SHOW** back to slides
+{: .callout}
 
 Some disadvatages of using a command-line interface are that it can be hard to get started using the shell in your everyday work because you need to spend time learning the commands. Many commands have names that are not obvious, so you can't easily guess what `ls` or `cat` do.
 
@@ -73,7 +87,8 @@ While a GUI shows you icons or menus to decide what you want to do, available CL
 However, a small number of "words" (i.e. commands) in Bash gets you a long way.
 This course will cover the most important and commonly used commands, show you how to stick these small commands together like building blocks to make quite complex programs, and explain how to get help to learn new commands when you want to go further.
 
-**SHOW** links to quizzes, terminology, tips and tricks, and further resources.
+> **SHOW** links to quizzes, terminology, tips and tricks, and further resources.
+{: .callout}
 
 If you have already used a Bash shell before you can try the quizzes in this module to see if you already know what we are cvering in these videos. Any questions you get wrong will point you to the relevant parts of the course,  but we recommend everyone watches some of the videos that are listed here. These ones are especially important to make sure you are familiar with the terminology you need for later courses, and some hints and tips that will allow you to work faster in the shell.
 We also have a list of more advanced shell tools, customisations and follow up courses if you want to go beyond the basics we teach here.
@@ -119,15 +134,26 @@ In this course, whenever we say "the shell", we mean a Bash shell.
 
 ## GUI and CLI
 
-The most widely used way to interact with personal computers is called a
-**graphical user interface** (GUI).
+The most widely used way to interact with personal computers is called a **graphical user interface** (GUI).
 A GUI displays some graphical elements such as menus, icon, or text boxes, and we interact with it by clicking a mouse, tapping a touch screen or typing.
 
-A **command-line interface** (CLI) is 
+A **command-line interface** (CLI) is a text only interface where you enter one command per line and then execute that line.
 
-TODO
+## File system, folders and directories
+
+> **SHOW** image of a filesystem
+{: .callout}
+
+Files are stored in groups which we call folders or directories. We use the words "folder" and "directory" to mean the same thing. Folders can be inside other folders creating a tree-like structure which is called the file system. 
+
+On Unix systems, the highest level that everything on the computer - the operating system and software and everything - is inside is the root directory, which is shown just as `/`. On a Windows system you have a set of drives called A, C etc. which each contain different things, so the operating system might be on one and your personal files might be on another.
+
+The "working directory" is the folder that you have open at the moment.
 
 # Tour of the shell
+
+> **SHOW** terminal
+{: .callout}
 
 ## Prompt
 
@@ -142,11 +168,22 @@ $
 If you don't see this, the shell program may still be loading so wait a minute, or check our setup instructions again.
 
 The shell typically uses `$ ` as the prompt, but may use a different symbol, and you might see some text before it.
+
+> **SHOW** [tensorflow installation instructions](https://www.tensorflow.org/install/pip#linux) again.
+{: .callout}
+
 In examples online,  people often show the prompt as `$ ` or `> ` when showing you what commands to type to install their software.
 
 *You do not type the $ prompt* when typing commands, only the words, letters and symbols that follows the prompt.
 
 ## Words before the prompt
+
+You might see some words and symbols before the prompt, this might be different than mine.
+This can show you some useful information about your computer, for example mine tells me my username, the name of the computer I am logged on to, and what my working directory is.
+If you have something different to mine, add it to the Q&A below this video and try to identify what the different parts mean.
+If you don't understand all the parts now we'll cover related information later and you can come back to this and see if you can understand more of it later.
+You can also customise this to add different information.
+We'll put a link to more resources on that at the end of the course.
 
 ## Cursor
 
@@ -160,8 +197,8 @@ TODO: difference between line cursor and block. Mention insert key in word?
 
 When you have written the command, you have to press the <kbd>Enter</kbd> key to execute it.
 
-So let's try our first command, `ls`, which is short for listing.
-This command will list the contents of the current directory:
+So let's try our first command, `ls`, which is short for list.
+This command will show you a list of the contents of your current folder (or working directory):
 
 ~~~
 $ ls
@@ -174,7 +211,7 @@ Documents   Library     Music       Public
 ~~~
 {: .output}
 
-TODO first drafted up to here...
+The output you get might look different to mine, it depends what folder your terminal is currenly looking at, your current working directory
 
 ## Output or no output
 
